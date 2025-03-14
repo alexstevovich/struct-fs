@@ -1,0 +1,70 @@
+{
+    "name": "struct-fs",
+    "version": "1.0.0",
+    "description": "Creates a structured representation of your file system that respects `.ignore` directives.",
+    "type": "module",
+    "main": "./gen/index.cjs",
+    "exports": {
+        "import": "./src/index.js",
+        "require": "./gen/index.cjs"
+    },
+    "types": "./index.d.ts",
+    "files": [
+        "./src/",
+        "./gen"
+    ],
+    "license": "Apache-2.0",
+    "author": {
+        "name": "Alex Stevovich",
+        "email": "alex.stevovich@gmail.com",
+        "url": "https://alexstevovich.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/alexstevovich/struct-fs.git"
+    },
+    "scripts": {
+        "test": "vitest",
+        "preamble": "preamble --apply --dir ./src/",
+        "zord": "filezord --zord --dir ./ --id pkg:struct-fs",
+        "pretty": "npx prettier --write .",
+        "lint": "eslint ./src/",
+        "lint:fix": "eslint --fix ./src/",
+        "build": "npm run preamble && npm run pretty && npm run lint:fix && node build.js && preamble --apply --dir ./gen/  && npm run zord"
+    },
+    "sideEffects": false,
+    "keywords": [
+        "filesystem",
+        "directory",
+        "fs",
+        "snapshot",
+        "gitignore",
+        "ignore",
+        "recursive",
+        "file-structure",
+        "directory-traversal",
+        "nodejs",
+        "file-system",
+        "metadata",
+        "symbolic-links",
+        "json-output",
+        "filesystem-snapshot",
+        "file-explorer",
+        "hierarchical-data",
+        "directory-listing",
+        "struct",
+        "fslite"
+    ],
+    "dependencies": {
+        "ignore": "^7.0.3"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.22.0",
+        "eslint": "^9.21.0",
+        "eslint-plugin-prettier": "^5.2.3",
+        "markdownlint": "^0.37.4",
+        "markdownlint-cli": "^0.44.0",
+        "prettier": "^3.5.3",
+        "vitest": "^3.0.8"
+    }
+}
