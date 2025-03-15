@@ -1,5 +1,7 @@
 # struct-fs
 
+> **Archetype:** Node.js package
+
 `struct-fs` creates a structured representation of your file system that respects `.ignore` directives. Traverse a directory with options to filter, seal, or redact ignored files and directories.
 
 This outputs unhydrated purely structural data that represents a snapshot of a filesystem hierarchy as data, it does not interact with the file system itself beyond reading it's contents to generate the snapshot.
