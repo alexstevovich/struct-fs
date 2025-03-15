@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import structFs from '../src/index.js';
+import struct from '../src/index.js';
 import path from 'path';
 
 const mockupPath = path.join('test', 'mockup');
 
-describe('structFs()', () => {
+describe('struct()', () => {
     it('Basic functionality - Ensures relative paths & ignores certain files', async () => {
-        const result = await structFs(mockupPath, { recursive: true });
+        const result = await struct(mockupPath, { recursive: true });
 
         let bFoundNested = true;
 
@@ -23,7 +23,7 @@ describe('structFs()', () => {
     });
 
     it('No recursion - Ensures only first level is read', async () => {
-        const result = await structFs(mockupPath);
+        const result = await struct(mockupPath);
 
         result.children.forEach((child) => {
             if (child.children) {
@@ -33,7 +33,7 @@ describe('structFs()', () => {
     });
 
     it('IgnoreFile - Allows using a different ignore file', async () => {
-        const result = await structFs(mockupPath, { ignoreFile: 'NOTHING' });
+        const result = await struct(mockupPath, { ignoreFile: 'NOTHING' });
 
         let bFoundEnv = false;
 
@@ -47,7 +47,7 @@ describe('structFs()', () => {
     });
 
     it('Sealed directories - Ignores but keeps directory with empty children', async () => {
-        const result = await structFs(mockupPath, {
+        const result = await struct(mockupPath, {
             dirMode: 'seal',
             recursive: true,
         });
@@ -60,7 +60,7 @@ describe('structFs()', () => {
     });
 
     it('Redacted directories - Renames ignored directories but keeps them', async () => {
-        const result = await structFs(mockupPath, {
+        const result = await struct(mockupPath, {
             dirMode: 'redact',
             recursive: true,
         });
@@ -73,7 +73,7 @@ describe('structFs()', () => {
     });
 
     it('Redacted files - Renames ignored files but keeps them', async () => {
-        const result = await structFs(mockupPath, { fileMode: 'redact' });
+        const result = await struct(mockupPath, { fileMode: 'redact' });
 
         const containsRedacted = result.children.some(
             (child) => child.path === '!file',
@@ -83,7 +83,7 @@ describe('structFs()', () => {
     });
 
     it('Detects symbolic links correctly', async () => {
-        const result = await structFs(mockupPath, { recursive: true });
+        const result = await struct(mockupPath, { recursive: true });
 
         const containsSymlink = result.children.some(
             (child) => child.sym === true,
@@ -93,7 +93,7 @@ describe('structFs()', () => {
     });
 
     it('Supports absolute paths when enabled', async () => {
-        const result = await structFs(mockupPath, { absolutePaths: true });
+        const result = await struct(mockupPath, { absolutePaths: true });
 
         expect(result.path).toEqual(path.resolve(mockupPath));
 
@@ -103,7 +103,7 @@ describe('structFs()', () => {
     });
 
     it('Handles deep recursion - Nested files are included', async () => {
-        const result = await structFs(mockupPath, { recursive: true });
+        const result = await struct(mockupPath, { recursive: true });
 
         const nestedFolder = result.children.find(
             (child) => child.path === 'nested',
@@ -114,7 +114,7 @@ describe('structFs()', () => {
     });
 
     it('Handles empty directories - Empty folders should still appear', async () => {
-        const result = await structFs(mockupPath, { recursive: true });
+        const result = await struct(mockupPath, { recursive: true });
 
         const emptyFolder = result.children.find(
             (child) => child.path === 'empty-folder',

@@ -23,9 +23,9 @@ This outputs unhydrated purely structural data that represents a snapshot of a f
 ## Usage
 
 ```js
-import structFs from 'struct-fs';
+import struct from 'struct-fs';
 
-const result = await structFs('./my-project', {
+const result = await struct('./my-project', {
     recursive: true,
     dirMode: 'seal',
     fileMode: 'ignore',

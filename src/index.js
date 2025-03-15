@@ -27,11 +27,11 @@
  *
  * @system
  *
- * generated_on: 2025-03-14T22:36:36.518Z
+ * generated_on: 2025-03-15T03:00:02.150Z
  * certified_version: 1.0.0
  * file_uuid: 16c9c744-fcf6-4bb0-82f6-dda2aefa5dca
- * file_size: 6645 bytes
- * file_hash: 28122cba555e336baa3fc52a777fef37c50b11f445b05ce1ef19ce149041a31b
+ * file_size: 6635 bytes
+ * file_hash: 9031da2ee3524e5baa76be2ca3e115db7a4af317337c00fe427954139d09533d
  * mast_hash: eed65c3ca703508c2fc0070eb3b1dc5cd0ec5a9283f47e14038ca774a1312a79
  * generated_by: preamble on npm!
  *
@@ -181,7 +181,7 @@ async function traverseDirectory(
 /**
  * Main function to generate a structured file system object.
  */
-export async function structureFs(
+export async function struct(
     dir,
     {
         ignoreFile = '.gitignore', // Custom ignore file (default to `.gitignore`)
@@ -218,4 +218,4 @@ export async function structureFs(
     ); // Ensures the root directory is always included
 }
 
-export default structureFs;
+export default struct;

@@ -87,10 +87,10 @@ declare module 'struct-fs' {
      * @param options - Optional configuration settings.
      * @returns A promise resolving to the structured representation of the file system.
      */
-    export function structureFs(
+    export function struct(
         dir: string,
         options?: StructFsOptions,
     ): Promise<StructFsEntry>;
 
-    export default structureFs;
+    export default struct;
 }

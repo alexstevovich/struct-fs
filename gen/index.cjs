@@ -27,11 +27,11 @@
  *  
  * @system
  *
- * generated_on: 2025-03-14T22:36:40.535Z
+ * generated_on: 2025-03-15T03:00:06.075Z
  * certified_version: 1.0.0
  * file_uuid: 16c9c744-fcf6-4bb0-82f6-dda2aefa5dca
- * file_size: 7176 bytes
- * file_hash: 50105abe61ee90413cac98087294808a377a0f08917c5147412b129ef34a2acc
+ * file_size: 7151 bytes
+ * file_hash: 9412e3131c33d1f067cfd69c128bd79b7ff0274eb03fdd6fabf99257a62e7766
  * mast_hash: 3a89d8d2322d33a39c258ff73be48f6dc090986619c7cd8c3add51395b3bfff4
  * generated_by: preamble on npm!
  *
@@ -67,7 +67,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var index_exports = {};
 __export(index_exports, {
   default: () => index_default,
-  structureFs: () => structureFs
+  struct: () => struct
 });
 module.exports = __toCommonJS(index_exports);
 var import_fs = __toESM(require("fs"), 1);
@@ -173,7 +173,7 @@ async function traverseDirectory(directory, baseDir, mode, ig, absolutePaths, re
   }
   return result;
 }
-async function structureFs(dir, {
+async function struct(dir, {
   ignoreFile = ".gitignore",
   // Custom ignore file (default to `.gitignore`)
   dirMode = "ignore",
@@ -210,8 +210,8 @@ async function structureFs(dir, {
     children: []
   };
 }
-var index_default = structureFs;
+var index_default = struct;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  structureFs
+  struct
 });
